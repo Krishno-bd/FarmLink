@@ -1,0 +1,65 @@
+{% extends 'Account/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-success text-white text-center rounded-top-4">
+                    <h3 class="mb-0">Update Profile</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form method="post">
+                        {% csrf_token %}
+
+                        <!-- User Form Fields -->
+                        <div class="mb-3">
+                            <label for="first_name" class="form-label">First Name</label>
+                            <input type="text" name="first_name" value="{{ user_form.first_name.value }}" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="last_name" class="form-label">Last Name</label>
+                            <input type="text" name="last_name" value="{{ user_form.last_name.value }}" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" name="email" value="{{ user_form.email.value }}" class="form-control">
+                        </div>
+
+                        <!-- Profile Form Fields -->
+                        <div class="mb-3">
+                            <label for="user_type" class="form-label">User Type</label>
+                            <select name="user_type" class="form-select">
+                                {% for choice in profile_form.user_type.field.choices %}
+                                    <option value="{{ choice.0 }}" {% if choice.0 == profile_form.user_type.value %}selected{% endif %}>
+                                        {{ choice.1 }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" name="address" value="{{ profile_form.address.value }}" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="phone_number" class="form-label">Phone Number</label>
+                            <input type="text" name="phone_number" value="{{ profile_form.phone_number.value }}" class="form-control">
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success px-4">Update Profile</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{% url 'Account:profile' %}" class="btn btn-outline-secondary btn-sm px-4">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

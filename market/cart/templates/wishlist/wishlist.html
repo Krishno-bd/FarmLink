@@ -1,0 +1,36 @@
+{% extends 'Account/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Your Wishlist</h2>
+    <div class="row">
+        {% if wishlist_items %}
+            {% for item in wishlist_items %}
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-capitalize">
+                            <h4 class="card-title">{{ item.product.name }}</h4>
+                            <p class="card-text">Price: Taka. {{ item.product.price }}</p>
+                            <p class="card-text">Quantity Available: {{ item.product.quantity }}</p>
+
+                            <div class="d-flex justify-content-between">
+                                <a href="{% url 'cart:addtocart' item.product.id %}" class="btn btn-success">Add to Cart</a>
+                                <a href="{% url 'cart:remove' item.product.id %}" class="btn btn-danger">Remove</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-12">
+                <div class="alert alert-warning text-center" role="alert">
+                    Your wishlist is empty.
+                </div>
+                <div class="text-center">
+                    <a href="{% url 'product:home' %}" class="btn btn-info text-light">Continue Shopping</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

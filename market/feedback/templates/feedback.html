@@ -1,0 +1,17 @@
+{% extends 'Account/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center text-success">Contact / Feedback</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form method="POST" novalidate>
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

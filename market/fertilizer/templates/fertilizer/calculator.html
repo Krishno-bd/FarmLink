@@ -1,0 +1,45 @@
+{% extends 'Account/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow p-4" style="border-radius: 15px; background-color: #f6fff5;">
+        <h2 class="mb-4 text-success">🌾 Fertilizer Calculator</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+                <label for="crop" class="form-label"><strong>Select Crop:</strong></label>
+                <select name="crop" id="crop" class="form-control" required>
+                    <option value="" disabled selected>Choose a crop</option>
+                    <option value="wheat">Wheat</option>
+                    <option value="rice">Rice</option>
+                    <option value="maize">Maize</option>
+                    <option value="cotton">Cotton</option>
+                    <option value="tomato">Tomato</option>
+                </select>
+            </div>
+
+            <div class="form-group mb-4">
+                <label for="land_size" class="form-label"><strong>Land Size (in acres):</strong></label>
+                <input type="number" step="0.1" min="0.1" name="land_size" id="land_size" class="form-control" placeholder="e.g. 2.5" required>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Calculate Fertilizer</button>
+        </form>
+
+        {% if result %}
+        <div class="mt-4">
+            <h4 class="text-success">🌱 Recommended Fertilizers:</h4>
+            <ul class="list-group mt-2">
+                {% for name, amount in result.items %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ name }}
+                        <span class="badge bg-success rounded-pill">{{ amount }} kg</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

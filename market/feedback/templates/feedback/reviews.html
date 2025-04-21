@@ -1,0 +1,17 @@
+<!-- feedback/templates/feedback/reviews.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h3 class="text-center">Reviews</h3>
+    <div class="list-group">
+      {% for review in reviews %}
+        <div class="list-group-item">
+          <h5>{{ review.user.username }} - {{ review.rating }} stars</h5>
+          <p>{{ review.comment }}</p>
+          <small>{{ review.created_at }}</small>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

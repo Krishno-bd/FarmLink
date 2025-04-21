@@ -1,0 +1,66 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Django migrations
+**/migrations/*.pyc
+**/migrations/__pycache__/
+**/migrations/
+
+# Virtual environment
+venv/
+ENV/
+env/
+
+# VS Code settings
+.vscode/
+
+# macOS
+.DS_Store
+
+# Python environment management
+Pipfile.lock
+
+# Database
+*.sqlite3
+
+# Logs
+*.log
+
+# Static and media files (if generated or collected)
+staticfiles/
+media/
+
+# Test coverage
+htmlcov/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Local config
+*.env
+
+# mypy
+.mypy_cache/
+
+# pyre
+.pyre/
+
+# pytype
+.pytype/
+
+# pip-tools
+*.txt # Optional if using requirements.txt only from pip-tools output
+
+# Build and dist
+build/
+dist/
+*.egg-info/
+.eggs/
