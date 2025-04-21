@@ -1,5 +1,3 @@
-Remove-Item -Recurse -Force .\venv
-
 python -m venv venv
 
 .\venv\Scripts\Activate
